@@ -1,0 +1,31 @@
+.navbar  {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    color: #ffffff;
+    background-color: hsla(184, 23%, 28%, 0.326);
+    
+
+}
+.logo a{
+    font-size: 40px;
+    flex-basis: 25%;
+    margin-left: 100px;
+    text-decoration: none;
+    color: #ffffff;
+}
+.itemNav {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 10vh;
+    list-style: none;
+    
+}
+
+.itemNav li {
+    font-weight: 900;
+    font-size: 16px;
+    margin-right:100px;
+}
