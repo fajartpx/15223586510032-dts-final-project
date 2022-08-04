@@ -4,43 +4,52 @@ import Footer from '../components/Footer';
 import JsonFood from '../data/food.json'
 import ListCategoryCard from "./ListCategoryCard";
 import ListItemCard from "./ListItemCard";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 
 
 const Dashboard =(props)=>{
 
 const [category, setCategory] = useState("Burger");
-
 const ubahCategory =(data)=>{
   setCategory(data)
 }
+
+const [foodnya,setFood] =useState([]);
+
+useEffect(()=>{
+  const fetchDataFood = async () => {
+
+    try {
+      const response  = await axios.get("https://62e7fcde249bb1284ea68714.mockapi.io/api/v1/food"); 
+      setFood(response.data) ; 
+      console.log(response.data)
+    } catch (err) {
+      console.log("error", err);
+  }}
+    fetchDataFood();
+  }); 
+
 return (
     <div className="App">
     <Header/>
     <div style={{height:'60vh'}}>
-      {/* <Routes className="itemNav">
-      <Route path="/" element={<Listcategory select="Pizza"/>} />
-      {/* <Route path="Burger" element={<Listcategory select="Burger"/>} />
-      <Route path="Pizza" element={<Listcategory select="Pizza"/>} />
-      <Route path="Pasta" element={<Listcategory select="Pasta"/>} />
-      <Route path="Dessert" element={<Listcategory select="Dessert"/>} />
-      <Route path="Rice" element={<Listcategory select="Rice"/>} />
-      <Route path="Lumpia" element={<Listcategory select="Lumpia"/>} /> */} 
+      {/* Ambil gambar category dari JSON  */}
         <div className='itemNav'> 
-            {<ListCategoryCard key={JsonFood.menu[0]} propsFood={JsonFood.menu[0]} tekan={()=>ubahCategory('Burger')} />} 
-            {<ListCategoryCard key={JsonFood.menu[9]} propsFood={JsonFood.menu[9]} tekan={()=>ubahCategory('Pizza')}/>} 
-            {<ListCategoryCard key={JsonFood.menu[17]} propsFood={JsonFood.menu[17]} tekan={()=>ubahCategory('Pasta')}/> } 
-            {<ListCategoryCard key={JsonFood.menu[25]} propsFood={JsonFood.menu[25]} tekan={()=>ubahCategory('Dessert')}/> } 
-            {<ListCategoryCard key={JsonFood.menu[33]} propsFood={JsonFood.menu[33]} tekan={()=>ubahCategory('Rice')}/> } 
-            {<ListCategoryCard key={JsonFood.menu[47]} propsFood={JsonFood.menu[47]} tekan={()=>ubahCategory('Lumpia')}/> }    
+            {<ListCategoryCard key={JsonFood.image[0]} propsFood={JsonFood.image[0]} tekan={()=>ubahCategory('Burger')} />} 
+            {<ListCategoryCard key={JsonFood.image[1]} propsFood={JsonFood.image[1]} tekan={()=>ubahCategory('Pizza')}/>} 
+            {<ListCategoryCard key={JsonFood.image[2]} propsFood={JsonFood.image[2]} tekan={()=>ubahCategory('Pasta')}/> } 
+            {<ListCategoryCard key={JsonFood.image[3]} propsFood={JsonFood.image[3]} tekan={()=>ubahCategory('Dessert')}/> } 
+            {<ListCategoryCard key={JsonFood.image[4]} propsFood={JsonFood.image[4]} tekan={()=>ubahCategory('Rice')}/> } 
+            {<ListCategoryCard key={JsonFood.image[5]} propsFood={JsonFood.image[5]} tekan={()=>ubahCategory('Lumpia')}/> }    
         </div>
         
         <div className="Container">
-            {JsonFood.menu.filter((food)=> food.category == category).map((food)=> {
+            { foodnya.filter((food)=> food.category == category).map((food)=> {
             return <ListItemCard key={food.id} propsFood={food}/>})}
         </div>
-
+ 
         </div>
     
     <Footer />
