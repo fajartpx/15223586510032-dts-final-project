@@ -3,7 +3,7 @@ import React from "react";
 
 const Button = (props)=>{
 
-    const {type,padding,backgroundColor,color, width, height, title, border, borderRadius} =props;
+    const {onSubmit,type,padding,backgroundColor,color, width, height, title, border, borderRadius} =props;
 
     return(
         <button style={
@@ -13,8 +13,11 @@ const Button = (props)=>{
             height:height,
             border:border,
             borderRadius:borderRadius,
-            padding:padding
-            }}>{title}</button>
+            padding:padding,
+            type:type
+            }} 
+           
+            >{title}</button>
     )
 }
 

@@ -31,3 +31,7 @@
     margin-right:100px;
     color: #ffffff;
 }
+
+.itemNav li logout{
+    cursor: pointer;
+}
