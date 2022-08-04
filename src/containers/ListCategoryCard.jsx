@@ -1,19 +1,20 @@
 import React from "react";
-import '../style/listcategory.css'
+import '../style/ListCategoryCard.css'
 
 
-const ListCategoryCard =({propsFood})=>{
+const ListCategoryCard =({propsFood,tekan})=>{
 
 
     return (
         <>
-        <div className="Category" key={propsFood.key}>
-        <div className="box" >
+        
+        <div key={propsFood.key} >
+        <div className="box" onClick={()=>tekan()} >
         <img style={{width:'100px', height:'100px', borderRadius:'100px'}} src={propsFood.image} />
-        <h1 >{propsFood.category}</h1>
+        <h3 >{propsFood.category}</h3>
         </div>
-        </div>
-         
+       
+         </div>
              
         {/* <div className="Category" key={propsFood.key}>
   
