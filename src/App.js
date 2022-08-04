@@ -11,8 +11,8 @@ function App() {
   
   return (
     <div className="App">
-    <div style={{height:'50vh'}}>
-      <Routes className="itemNav">
+    <div>
+      <Routes>
       <Route path="/" element={<Dashboard/>} />
       <Route path="Login" element={<Login/>} />
      </Routes>
